@@ -14,13 +14,14 @@ int target = totalChips / chips.Length;
 int minSteps = 0;
 while(true)
 {
-    for(int i = 0; i < chips.Length; i++)
+    int maxVal = chips.Max();
+    int minWay = chips.Length;
+    int[] newPos = new int[chips.Length];
+    for (int i = 0; i < chips.Length; i++)
     {
         if(chips[i] < target)
         {
-            int maxVal = chips.Max();
-            int minWay = chips.Length;
-            int[] newPos = new int[chips.Length];
+            
             for (int j = 0; j < chips.Length; j++)  
             {
                 if(chips[j] == maxVal && Math.Abs(i - j) < minWay)
@@ -81,10 +82,10 @@ while(true)
                     }
                 }
             }
-            minSteps += minWay;
-            chips = newPos;
         }
     }
+    minSteps += minWay;
+    chips = newPos;
     bool ready = true;
     for(int i = 0; i < chips.Length; i++)
     {
