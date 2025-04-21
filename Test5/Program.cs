@@ -1,5 +1,5 @@
 ﻿Console.WriteLine("Введите количество фишек на каждом месте через пробел:");
-string[] input = Console.ReadLine().Split(' ');
+string[] input = Console.ReadLine().Split(',');
 int[] chips = new int[input.Length];
 for (int i = 0; i < input.Length; i++)
 {
@@ -21,7 +21,7 @@ while(true)
             int maxVal = chips.Max();
             int minWay = chips.Length;
             int[] newPos = new int[chips.Length];
-            for (int j = 0; j < chips.Length; j++)
+            for (int j = 0; j < chips.Length; j++)  
             {
                 if(chips[j] == maxVal && Math.Abs(i - j) < minWay)
                 {
@@ -61,9 +61,9 @@ while(true)
                         }
                     }
                 }
-                if (chips[j] == maxVal && Math.Abs(chips.Length - i) + j < minWay)
+                if (chips[j] == maxVal && Math.Abs(chips.Length - i - 1) + j < minWay)
                 {
-                    minWay = Math.Abs(chips.Length - i) + j;
+                    minWay = Math.Abs(chips.Length - i - 1) + j;
                     for (int k = 0; k < chips.Length; k++)
                     {
                         if (k == i)
